@@ -20,11 +20,5 @@ public class ListingTodoMysqlApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    Todo todo1 = new Todo("MySQL finished");
-    todo1.setDone(true);
-    Todo todo2 = new Todo("Add CommandLineRunner");
-    todo2.setUrgent(true);
-    todoRepository.save(todo1);
-    todoRepository.save(todo2);
   }
 }
