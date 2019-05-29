@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+</head>
+<body>
+    <h1 th:text="${todo.title}"></h1>
+    <p th:text="|Id: ${todo.id}|"></p>
+    <p th:text="|Created on: ${todo.date} ${todo.time}|"></p>
+    <p th:text="|Urgent: ${todo.urgent}|"></p>
+    <p th:text="|Done: ${todo.done}|"></p>
+    <a href="/todo">Back</a>
+</body>
+</html>
