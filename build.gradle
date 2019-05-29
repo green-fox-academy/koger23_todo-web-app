@@ -20,4 +20,6 @@ dependencies {
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compile group: 'org.webjars', name: 'bootstrap', version: '4.3.1'
+    compile group: 'org.webjars.bower', name: 'jquery', version: '3.4.1'
 }
