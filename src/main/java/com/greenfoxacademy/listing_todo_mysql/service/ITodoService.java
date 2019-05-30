@@ -15,7 +15,9 @@ public interface ITodoService {
 
   Todo findById(long id);
 
-  void update(long id, Todo newTodo);
+  void update(long id, Todo newTodo, String firstname, String lastname);
 
-  Todo search(String keyword);
+  List<Todo> search(String title);
+
+  void save(Todo todo);
 }
