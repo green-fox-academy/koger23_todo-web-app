@@ -11,6 +11,10 @@
             <a class="badge badge-light" href="/todo/add" style="font-size: 26px;">Add new Todo</a>
             <a class="badge badge-light" href="/todo?isActive=true" style="font-size: 26px;">Only undone</a>
             <a class="badge badge-light" href="/todo" style="font-size: 26px;">Show all</a>
+            <form class="form-inline" th:method="post" th:action="@{/todo/search}">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+            </form>
         </div>
     </nav>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
