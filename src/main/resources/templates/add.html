@@ -9,16 +9,28 @@
 <body>
     <div class="container">
         <form class="form-group" th:method="post" th:object="${todo}" th:action="@{/todo/add}">
-            <div class="form-group">
-                <label for="action">Action:</label>
-                <input class="" id="action" type="text" name="action" th:field="*{title}">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="action">Action:</label>
+                <div class="col">
+                    <input class="form-control" id="action" type="text" name="action" th:field="*{title}" placeholder="Todo title" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="selection">Assignee</label>
+                <div class="col">
+                    <select id="selection" name="selection" class="browser-default custom-select mb-3">
+                        <option th:each="assignee : ${assignee_list}"  th:value="|${assignee.firstName} ${assignee.lastName}|" th:utext="|${assignee.firstName} ${assignee.lastName}|"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="urgent">Urgent:</label>
+                <div class="col">
+                    <input class="form-check-inline" id="urgent" type="checkbox" name="urgent" th:field="*{urgent}">
+                </div>
             </div>
             <div class="form-group">
-                <label for="urgent">Urgent:</label>
-                <input id="urgent" type="checkbox" name="urgent" th:field="*{urgent}">
-            </div>
-            <div class="form-group">
-                <button type="submit">Add</button>
+                <button class="form-check-inline" type="submit">Add</button>
             </div>
         </form>
     </div>
