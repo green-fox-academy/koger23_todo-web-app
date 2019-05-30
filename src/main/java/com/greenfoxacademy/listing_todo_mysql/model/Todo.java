@@ -1,9 +1,14 @@
 package com.greenfoxacademy.listing_todo_mysql.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 public class Todo {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,68 +25,23 @@ public class Todo {
   @Column(nullable = false, name = "Created_at")
   @Temporal(TemporalType.TIME)
   private Date time;
+  @ManyToOne(fetch = FetchType.LAZY)
+  private Assignee assignee;
 
   public Todo(){
   }
 
   public Todo(String title) {
-    this(title, false, false, new Date(), new Date());
+    this(title, false, false, new Date(), new Date(), new Assignee());
   }
 
-  public Todo(String title, boolean urgent, boolean done, Date date, Date time) {
+  public Todo(String title, boolean urgent, boolean done, Date date, Date time, Assignee assignee) {
     this.title = title;
     this.urgent = urgent;
     this.done = done;
     this.date = date;
     this.time = time;
-  }
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public boolean isUrgent() {
-    return urgent;
-  }
-
-  public void setUrgent(boolean urgent) {
-    this.urgent = urgent;
-  }
-
-  public boolean isDone() {
-    return done;
-  }
-
-  public void setDone(boolean done) {
-    this.done = done;
-  }
-
-  public Date getDate() {
-    return date;
-  }
-
-  public void setDate(Date date) {
-    this.date = date;
-  }
-
-  public Date getTime() {
-    return time;
-  }
-
-  public void setTime(Date time) {
-    this.time = time;
+    this.assignee = assignee;
   }
 }
 
