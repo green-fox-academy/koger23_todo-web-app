@@ -1,5 +1,6 @@
 package com.greenfoxacademy.listing_todo_mysql.service;
 
+import com.greenfoxacademy.listing_todo_mysql.model.Assignee;
 import com.greenfoxacademy.listing_todo_mysql.model.Todo;
 import com.greenfoxacademy.listing_todo_mysql.repository.IAssigneeRepository;
 import com.greenfoxacademy.listing_todo_mysql.repository.ITodoRepository;
@@ -17,8 +18,9 @@ public class TodoServiceImp implements ITodoService {
   private ITodoRepository todoRepository;
   private IAssigneeRepository assigneeRepository;
 
-  public TodoServiceImp(ITodoRepository todoRepository) {
+  public TodoServiceImp(ITodoRepository todoRepository, IAssigneeRepository assigneeRepository) {
     this.todoRepository = todoRepository;
+    this.assigneeRepository = assigneeRepository;
   }
 
   public List<Todo> findAll() {
@@ -47,16 +49,24 @@ public class TodoServiceImp implements ITodoService {
             .orElse(new Todo());
   }
 
-  public void update(long id, Todo newTodo) {
+  public void update(long id, Todo newTodo, String firstName, String lastName) {
     Todo todo = todoRepository.findById(id).get();
     todo.setTitle(newTodo.getTitle());
     todo.setUrgent(newTodo.isUrgent());
     todo.setDone(newTodo.isDone());
+    Assignee assignee = assigneeRepository.findByFirstNameAndLastName(firstName, lastName);
+    todo.setAssignee(assignee);
+
     todoRepository.save(todo);
   }
 
   @Override
-  public Todo search(String keyword) {
-    return null;
+  public List<Todo> search(String keyword) {
+    return todoRepository.findAllByTitleContains(keyword);
+  }
+
+  @Override
+  public void save(Todo todo) {
+    todoRepository.save(todo);
   }
 }
