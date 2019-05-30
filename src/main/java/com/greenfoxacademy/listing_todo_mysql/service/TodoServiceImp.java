@@ -1,7 +1,8 @@
 package com.greenfoxacademy.listing_todo_mysql.service;
 
 import com.greenfoxacademy.listing_todo_mysql.model.Todo;
-import com.greenfoxacademy.listing_todo_mysql.repository.TodoRepository;
+import com.greenfoxacademy.listing_todo_mysql.repository.IAssigneeRepository;
+import com.greenfoxacademy.listing_todo_mysql.repository.ITodoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -54,7 +55,8 @@ public class TodoServiceImp implements ITodoService {
     todoRepository.save(todo);
   }
 
+  @Override
   public Todo search(String keyword) {
-    return todoRepository.findByTitleLike(keyword);
+    return null;
   }
 }
