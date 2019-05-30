@@ -52,4 +52,8 @@ public class TodoService {
     todo.setDone(newTodo.isDone());
     todoRepository.save(todo);
   }
+
+  public Todo search(String keyword) {
+    return todoRepository.findByTitleLike(keyword);
+  }
 }
