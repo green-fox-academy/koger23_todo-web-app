@@ -11,11 +11,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class TodoService {
+public class TodoServiceImp implements ITodoService {
 
-  private TodoRepository todoRepository;
+  private ITodoRepository todoRepository;
+  private IAssigneeRepository assigneeRepository;
 
-  public TodoService(TodoRepository todoRepository) {
+  public TodoServiceImp(ITodoRepository todoRepository) {
     this.todoRepository = todoRepository;
   }
 
