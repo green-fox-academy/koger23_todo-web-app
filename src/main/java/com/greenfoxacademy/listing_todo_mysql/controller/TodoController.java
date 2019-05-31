@@ -51,7 +51,7 @@ public class TodoController {
   }
 
   @GetMapping("/todo/edit/{id}")
-  public String edit(Model model, @PathVariable long id) {
+  public String renderEditForm(Model model, @PathVariable long id) {
     Todo todo = todoServiceImp.findById(id);
     model.addAttribute("assignee_list", assigneeService.findAll());
     model.addAttribute("id", id);
