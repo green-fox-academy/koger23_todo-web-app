@@ -54,6 +54,7 @@ public class TodoServiceImp implements ITodoService {
     todo.setTitle(newTodo.getTitle());
     todo.setUrgent(newTodo.isUrgent());
     todo.setDone(newTodo.isDone());
+    todo.setDueDate(newTodo.getDueDate());
     Assignee assignee = assigneeRepository.findByFirstNameAndLastName(firstName, lastName);
     todo.setAssignee(assignee);
 
