@@ -2,6 +2,7 @@ package com.greenfoxacademy.listing_todo_mysql.controller;
 
 import com.greenfoxacademy.listing_todo_mysql.model.Assignee;
 import com.greenfoxacademy.listing_todo_mysql.service.IAssigneeService;
+import com.greenfoxacademy.listing_todo_mysql.service.ITodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class AssigneeController {
 
   private IAssigneeService assigneeService;
+  private ITodoService todoService;
 
   public AssigneeController(IAssigneeService assigneeService) {
     this.assigneeService = assigneeService;
@@ -49,5 +51,17 @@ public class AssigneeController {
     assigneeService.save(assignee);
     model.addAttribute("assigneeList", assigneeService.findAll());
     return "redirect:/assignees";
+  }
+
+  @GetMapping("/assignee/{id}/details")
+  public String renderDetails(Model model, @PathVariable long id) {
+    model.addAttribute("assignee", assigneeService.findById(id));
+    return "detail_assignee";
+  }
+
+  @GetMapping("/assignee/{id}/todoList")
+  public String renderTodoList(Model model, @PathVariable long id) {
+    model.addAttribute("todolist", assigneeService.findById(id).getTodoList());
+    return "todo";
   }
 }
