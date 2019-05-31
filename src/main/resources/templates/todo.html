@@ -19,6 +19,7 @@
             <th>ID</th>
             <th>ACTION</th>
             <th>CREATED ON</th>
+            <th>DUE DATE</th>
             <th>ASSIGNEE</th>
             <th>DONE</th>
             <th>URGENT</th>
@@ -30,6 +31,7 @@
                 <td th:text="${todo.id}"></td>
                 <td><a th:text="${todo.title}" th:href="|@{todo/}${todo.id}@{/details}|"></a></td>
                 <td th:text="${todo.date}"></td>
+                <td th:text="${todo.dueDate}"></td>
                 <td th:if="${todo.assignee} != null" th:text="|${todo.assignee.firstName} ${todo.assignee.lastName}|"></td>
                 <td th:if="${todo.assignee} == null"><a th:href="|/todo/${todo.id}/addassignee|">add</a></td>
                 <td th:text="${todo.done}"></td>
