@@ -60,7 +60,7 @@ public class TodoController {
   }
 
   @PostMapping("/todo/edit/{id}")
-  public String edited(Todo newTodo, @PathVariable long id, @RequestParam String selection) {
+  public String saveTodo(Todo newTodo, @PathVariable long id, @RequestParam String selection) {
     String[] name = selection.split(" ");
     todoServiceImp.update(id, newTodo, name[0], name[1]);
     return "redirect:/todo";
