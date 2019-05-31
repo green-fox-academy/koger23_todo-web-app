@@ -33,7 +33,7 @@
                 <td th:text="${assignee.id}"></td>
                 <td><a th:text="|${assignee.firstName} ${assignee.lastName}" th:href="|@{assignee/}${assignee.id}@{/details}|"></a></td>
                 <td th:text="${assignee.email}"></td>
-                <td th:if="${assignee.todoList.size()} != 0"><a th:href="|/assignee/${assignee.id}/addassignee|">show</a></td>
+                <td th:if="${assignee.todoList.size()} != 0"><a th:href="|@{/assignee/}${assignee.id}@{/todoList}|">show</a></td>
                 <td th:if="${assignee.todoList.size()} == 0">-</td>
                 <td><a class="text-info" th:href="|@{assignee/}${assignee.id}/edit_assignee|"><i class="far fa-edit"></i></a></td>
                 <td><a class="text-danger" th:href="|@{assignee/delete/}${assignee.id}|"><i class="fas fa-trash-alt"></i></a>
