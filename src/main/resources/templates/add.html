@@ -24,8 +24,8 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="selection">Assignee</label>
                 <div class="col">
-                    <select id="selection" name="selection" class="browser-default custom-select mb-3">
-                        <option th:each="assignee : ${assignee_list}" th:value="|${assignee.firstName} ${assignee.lastName} ${assignee.email}|" th:utext="|${assignee.firstName} ${assignee.lastName} ${assignee.email}|"></option>
+                    <select id="selection" name="selection" th:field="*{assignee.id}" class="browser-default custom-select mb-3">
+                        <option th:each="assignee : ${assignee_list}" th:value="${assignee.id}" th:utext="|${assignee.firstName} ${assignee.lastName} [${assignee.email}]|"></option>
                     </select>
                 </div>
             </div>
