@@ -14,8 +14,15 @@
     <h1 class="text-dark text-center font-weight-bold">TODOS FOR TODAY</h1>
     <div class="container">
         <div th:replace="fragment/navigation :: copy"></div>
+        <div class="container w-100 justify-content-center">
+            <form class="form-inline mr-auto justify-content-between" method="get" action="/todo/search" style="margin: 20px 0 20px">
+                <input class="form-control mr-sm-2" name="keyword" type="text" placeholder="Search for todo..." aria-label="Search" style="width: 90%">
+                <button class="btn btn-dark btn-rounded btn-sm my-0" type="submit" style="width: 7%; font-weight: bold;">Search</button>
+            </form>
+        </div>
         <table class="table">
             <thead>
+            <th></th>
             <th>ID</th>
             <th>ACTION</th>
             <th>CREATED ON</th>
