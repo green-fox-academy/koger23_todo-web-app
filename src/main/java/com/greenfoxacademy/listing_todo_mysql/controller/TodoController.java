@@ -39,10 +39,7 @@ public class TodoController {
   }
 
   @PostMapping("/todo/add")
-  public String add(@ModelAttribute Todo todo, @RequestParam("selection") String assigneeName) {
-    String[] assigneeDatas = assigneeName.split(" ");
-    Assignee assignee = assigneeService.findAllByFirstNameAndLastNameAndEmail(assigneeDatas[0], assigneeDatas[1], assigneeDatas[2]);
-    todo.setAssignee(assignee);
+  public String add(@ModelAttribute Todo todo) {
     todoServiceImp.add(todo);
     return "redirect:/todo";
   }
