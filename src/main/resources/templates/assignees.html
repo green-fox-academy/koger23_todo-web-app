@@ -10,17 +10,19 @@
 </head>
 <body>
 <div class="todo-list">
-    <h3 class="text-dark text-center font-weight-bold">Assignees</h3>
+    <h1 class="text-dark text-center font-weight-bold">Assignees</h1>
     <div class="container">
         <div th:replace="fragment/navigation :: copy"></div>
-        <div class="container input-group">
-            <form class="form-inline" style="margin-bottom: 20px;" method="get" action="/assignees/search">
-                <i class="fas fa-search" aria-hidden="true"></i>
-                <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for assignee" aria-label="Search" name="search" width="100%">
+        <div class="container w-100 justify-content-center">
+            <form class="form-inline mr-auto justify-content-between" method="get" action="/assignees/search" style="margin: 20px 0 20px">
+                <input class="form-control mr-sm-2" name="keyword" type="text" placeholder="Search for assignee..." aria-label="Search" style="width: 90%">
+                <button class="btn btn-dark btn-rounded btn-sm my-0" type="submit" style="width: 7%; font-weight: bold;">Search</button>
             </form>
         </div>
+
         <table class="table">
             <thead>
+            <th></th>
             <th>ID</th>
             <th>Name</th>
             <th>E-Mail</th>
@@ -30,9 +32,10 @@
             </thead>
             <tbody>
             <tr th:each="assignee: ${assigneeList}">
+                <td th:text="${assigneeStat.count} + '.'"></td>
                 <td th:text="${assignee.id}"></td>
                 <td><a th:text="|${assignee.firstName} ${assignee.lastName}" th:href="|@{assignee/}${assignee.id}@{/detail_assignee}|"></a></td>
-                <td th:text="${assignee.email}"></td>
+                <td><a th:href="|mailto:${assignee.email}|" th:text="${assignee.email}"></a></td>
                 <td th:if="${assignee.todoList.size()} != 0"><a th:href="|@{/assignee/}${assignee.id}@{/todoList}|">show</a></td>
                 <td th:if="${assignee.todoList.size()} == 0">-</td>
                 <td><a class="text-info" th:href="|@{assignee/}${assignee.id}/edit_assignee|"><i class="far fa-edit"></i></a></td>
