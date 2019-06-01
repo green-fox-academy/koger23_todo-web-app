@@ -53,7 +53,7 @@ public class AssigneeController {
     return "redirect:/assignees";
   }
 
-  @GetMapping("/assignee/{id}/details")
+  @GetMapping("/assignee/{id}/detail_assignee")
   public String renderDetails(Model model, @PathVariable long id) {
     model.addAttribute("assignee", assigneeService.findById(id));
     return "detail_assignee";
