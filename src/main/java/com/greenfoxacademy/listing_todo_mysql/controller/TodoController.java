@@ -81,7 +81,7 @@ public class TodoController {
       List<Todo> todoList = todoServiceImp.search(keyword);
       model.addAttribute("todolist", todoList);
     }
-    return "/todo";
+    return "todo";
   }
 
   @GetMapping("/todo/{todo_id}/addassignee")
