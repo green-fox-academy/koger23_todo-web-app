@@ -8,9 +8,9 @@
 <body>
     <nav th:fragment="copy" class="navbar navbar-light align-content-center justify-content-center">
         <div  class="navigation-w-line container justify-content-between">
-            <a class="badge badge-light" href="/todo/add" style="font-size: 26px;">Add new Todo</a>
-            <a class="badge badge-light" href="/todo?isActive=true" style="font-size: 26px;">Only undone</a>
-            <a class="badge badge-light" href="/todo" style="font-size: 26px;">Show all</a>
+            <a class="badge badge-light" href="/todo/add" style="font-size: 26px;">Add new todo</a>
+            <a class="badge badge-light" href="/todo?isActive=true" style="font-size: 26px;">Show undone todo</a>
+            <a class="badge badge-light" href="/todo" style="font-size: 26px;">Show all todo</a>
             <a class="badge badge-light" href="/assignees" style="font-size: 26px;">Show assignees</a>
             <form class="form-inline" th:method="get" th:action="@{/todo/search}">
                 <i class="fas fa-search" aria-hidden="true"></i>
