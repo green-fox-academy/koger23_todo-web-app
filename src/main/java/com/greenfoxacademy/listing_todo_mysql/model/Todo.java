@@ -23,7 +23,7 @@ public class Todo {
   @Temporal(TemporalType.TIME)
   private Date time;
   @Column(name = "dueDate")
-  private java.sql.Date dueDate;
+  private java.sql.Date dueDate = new java.sql.Date(System.currentTimeMillis());
   @ManyToOne(fetch = FetchType.LAZY)
   private Assignee assignee;
 
@@ -31,7 +31,7 @@ public class Todo {
   }
 
   public Todo(String title) {
-    this(title, false, false, new Date(), new Date(), null, new Assignee());
+    this(title, false, false, new Date(), new Date(), (java.sql.Date) new Date(), new Assignee());
   }
 
   public Todo(String title, boolean urgent, boolean done, Date date, Date time, java.sql.Date dueDate, Assignee assignee) {
