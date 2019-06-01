@@ -10,12 +10,11 @@
 </head>
 <body>
     <div class="container">
-        <h1 th:text="${assignee.l}"></h1>
-        <p th:text="|Id: ${todo.id}|"></p>
-        <p th:text="|Created on: ${todo.date} ${todo.time}|"></p>
-        <p th:text="|Urgent: ${todo.urgent}|"></p>
-        <p th:text="|Done: ${todo.done}|"></p>
-        <a href="/todo">Back</a>
+        <h1 th:text="|${assignee.firstName} ${assignee.lastName}|"></h1>
+        <p th:text="|Id: ${assignee.id}|"></p>
+        <p th:text="|Email: ${assignee.email}|"></p>
+        <p th:text="|Number of todo: ${assignee.todoList.size()}|"></p>
+        <a href="/assignees">Back</a>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
