@@ -2,7 +2,6 @@ package com.greenfoxacademy.listing_todo_mysql.controller;
 
 import com.greenfoxacademy.listing_todo_mysql.model.Assignee;
 import com.greenfoxacademy.listing_todo_mysql.service.IAssigneeService;
-import com.greenfoxacademy.listing_todo_mysql.service.ITodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 public class AssigneeController {
 
   private IAssigneeService assigneeService;
-  private ITodoService todoService;
 
   public AssigneeController(IAssigneeService assigneeService) {
     this.assigneeService = assigneeService;
@@ -20,7 +18,7 @@ public class AssigneeController {
   @GetMapping("/assignees")
   public String showAssignees(Model model) {
     model.addAttribute("assigneeList", assigneeService.findAll());
-    return "/assignees";
+    return "assignees";
   }
 
   @GetMapping("/assignee/delete/{id}")
@@ -30,16 +28,16 @@ public class AssigneeController {
   }
 
   @GetMapping("/assignees/search")
-  public String search(Model model, @RequestParam("search") String keyword) {
+  public String search(Model model, @RequestParam("keyword") String keyword) {
     model.addAttribute("assigneeList", assigneeService.search(keyword));
-    return "/assignees";
+    return "assignees";
   }
 
   @GetMapping("/assignee/{id}/edit_assignee")
   public String editAssignee(Model model, @PathVariable("id") long assignee_id) {
     model.addAttribute("assignee_id", assignee_id);
     model.addAttribute("assignee", assigneeService.findById(assignee_id));
-    return "/edit_assignee";
+    return "edit_assignee";
   }
 
   @PostMapping("/assignee/{id}/save")
