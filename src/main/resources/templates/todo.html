@@ -37,7 +37,7 @@
             <tr th:each="todo: ${todolist}">
                 <td th:text="${todoStat.count} + '.'"></td>
                 <td th:text="${todo.id}"></td>
-                <td><a th:text="${todo.title}" th:href="|todo/${todo.id}/details|"></a></td>
+                <td><a th:text="${todo.title}" th:href="|/todo/${todo.id}/details|"></a></td>
                 <td th:text="${todo.date}"></td>
                 <td th:text="${todo.dueDate}"></td>
                 <td th:if="${todo.assignee} != null"><a th:href="|@{assignee/}${todo.assignee.id}@{/detail_assignee}|" th:text="|${todo.assignee.firstName} ${todo.assignee.lastName}|"></a></td>
